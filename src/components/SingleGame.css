@@ -1,0 +1,23 @@
+.SingleGame img {
+  width: 100%;
+  height: auto;
+}
+.SingleGame {
+  height: 9rem;
+  width: 9rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem;
+  padding: 0.5rem;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+@media only screen and (min-width: 992px) {
+  .SingleGame {
+    height: 14rem;
+    width: 14rem;
+    font-size: 1.4rem;
+  }
+}
