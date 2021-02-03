@@ -1,23 +1,39 @@
-.SingleGame img {
-  width: 100%;
-  height: auto;
-}
+@import url("https://fonts.googleapis.com/css2?family=Caveat:wght@400&display=swap");
+
 .SingleGame {
-  height: 9rem;
-  width: 9rem;
+  height: 15rem;
+  width: 10rem;
   display: flex;
-  flex-direction: column;
+  flex-flow: row wrap;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   margin: 1rem;
-  padding: 0.5rem;
-  font-weight: bold;
-  font-size: 1.1rem;
+  padding: 0;
 }
+.SingleGame img {
+  width: 90%;
+  height: auto;
+  border: solid 0.8rem rgb(80, 0, 4);
+}
+
+.SingleGame h3 {
+  font-size: 1.7rem;
+  margin-top: -1rem;
+  color: rgba(255, 255, 255, 0.87);
+  font-weight: 400;
+  width: 100%;
+  text-align: right;
+  font-family: "Caveat", "Arial", sans-serif;
+}
+
 @media only screen and (min-width: 992px) {
   .SingleGame {
-    height: 14rem;
+    height: 17rem;
     width: 14rem;
     font-size: 1.4rem;
+    margin: 1.5rem;
+  }
+  .SingleGame h3 {
+    margin-top: 0rem;
   }
 }
