@@ -1,38 +1,66 @@
+body {
+  padding: 0;
+  background-color: #7a0400;
+  background-image: url("assets/brick-wall.webp");
+}
+h1 {
+  font-size: 3rem;
+}
+h3 {
+  margin: 0;
+}
+
 .App {
   text-align: center;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.App a {
+  color: #000;
+  text-decoration: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.Home {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  list-style: none;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  padding: 0;
+}
+.Home li {
+  height: 9rem;
+  width: 9rem;
+  background-color: #7a0400;
+  color: rgb(179, 142, 142);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem;
+  padding: 0.5rem;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+.Home li:hover {
+  background-color: #331615;
+}
+.Home .theme {
+  background-color: #8f4d21;
+  color: rgb(230, 226, 40);
+  width: 20rem;
+  height: 5rem;
+  transform: rotate(-5deg);
+  background-color: #590600;
+  background-image: url("assets/dark-wood.webp");
+  margin-top: 2rem;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@media only screen and (min-width: 992px) {
+  .Home li {
+    height: 14rem;
+    width: 14rem;
+    font-size: 1.4rem;
   }
-  to {
-    transform: rotate(360deg);
+  .Home .theme {
+    margin-top: 5rem;
   }
 }
