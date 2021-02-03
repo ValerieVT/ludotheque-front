@@ -5,6 +5,7 @@ import axios from "axios";
 import Home from "./components/Home";
 import Header from "./components/Header";
 import Games from "./components/Games";
+import DescribedGame from "./components/DescribedGame";
 import Login from "./components/Login";
 import Admin from "./components/Admin";
 
@@ -20,7 +21,8 @@ export default function App() {
       <Header />
       <article>
         <Switch>
-          <Route path="/jeux" component={Games} />
+          <Route path="/jeux/:id" component={DescribedGame} />
+          <Route exact path="/jeux" component={Games} />
           <Route path="/login" component={Login} />
           <Route path="/admin" component={Admin} />
           <Route exact to="/" component={Home} />
