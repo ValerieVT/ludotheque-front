@@ -24,3 +24,5 @@ yarn-error.log*
 
 # maquettes
 maquettes.svg
+images
+public/jeux
