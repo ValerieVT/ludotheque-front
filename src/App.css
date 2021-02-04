@@ -79,6 +79,7 @@ li {
   background-color: #590600;
   background-image: url("assets/dark-wood.webp");
   margin-top: 2rem;
+  padding: 1rem 2rem;
   font-size: 2rem;
 }
 .Home .choices .theme-link:hover {
