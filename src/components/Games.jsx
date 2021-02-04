@@ -16,7 +16,11 @@ class Games extends React.Component {
   }
 
   fetchGames = () => {
-    const url = `${process.env.REACT_APP_API_URL}jeux/`;
+    const paramsOfURL = new URLSearchParams(window.location.search);
+    const paramsToUse = paramsOfURL.toString();
+    const searchWithParamsToUse =
+      paramsToUse === "" ? `` : `search/?${paramsToUse}`;
+    const url = `${process.env.REACT_APP_API_URL}jeux/${searchWithParamsToUse}`;
     axios
       .get(url)
       .then((response) => response.data)
