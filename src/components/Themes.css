@@ -1,0 +1,65 @@
+/* @import url("https://fonts.googleapis.com/css2?family=Caveat:wght@400&display=swap"); */
+
+.Themes {
+  width: 95%;
+  margin: auto;
+  margin-bottom: 6rem;
+  text-align: center;
+}
+.Themes h2 {
+  background-color: #8f4d21;
+  color: rgb(230, 226, 40);
+  width: 20rem;
+  height: 5rem;
+  transform: rotate(-5deg);
+  background-color: #590600;
+  background-image: url("../assets/dark-wood.webp");
+  margin: 2rem auto;
+  padding: 0.3rem 2rem 0.8rem 2rem;
+  font-size: 2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.Themes ul {
+  padding: 0;
+  list-style-type: none;
+  display: flex;
+  flex-flow: row wrap;
+  text-transform: capitalize;
+  justify-content: center;
+}
+.Themes ul li {
+  display: block;
+  height: 8rem;
+  width: 8rem;
+  background-color: #7a0400;
+  color: rgb(179, 142, 142);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem;
+  padding: 0.5rem;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+.Themes a:hover {
+  background-color: #331615;
+}
+.Themes ul li {
+  /* font-family: "Caveat", "Arial", sans-serif; */
+  /* font-weight: 200; */
+  color: #fff;
+  font-size: 1.2rem;
+  color: rgb(179, 142, 142);
+}
+
+@media only screen and (min-width: 992px) {
+  .Themes ul li {
+    height: 14rem;
+    width: 14rem;
+    font-size: 1.7rem;
+  }
+}
