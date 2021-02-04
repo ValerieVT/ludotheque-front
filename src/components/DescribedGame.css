@@ -1,0 +1,67 @@
+@import url("https://fonts.googleapis.com/css2?family=Caveat:wght@400&display=swap");
+
+.DescribedGame {
+  font-family: "Caveat", "Arial", sans-serif;
+  color: #fff;
+  width: 90%;
+  margin: auto;
+  margin-bottom: 6rem;
+}
+.DescribedGame h2 {
+  font-size: 4rem;
+}
+.DescribedGame img {
+  width: 90%;
+  height: auto;
+}
+.DescribedGame .summary {
+  font-size: 2rem;
+  margin: 0 0 0.5rem 0;
+}
+.DescribedGame .details article {
+  font-size: 1.8rem;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+.DescribedGame .details article p {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin: 0.5rem 0;
+  align-self: flex-end;
+  align-content: space-between;
+}
+.DescribedGame .details article .wider {
+  width: 100%;
+}
+.DescribedGame .picto {
+  width: 100%;
+  height: auto;
+  max-height: 200px;
+}
+
+@media only screen and (min-width: 992px) {
+  .DescribedGame {
+    margin-bottom: 0;
+  }
+  .DescribedGame .summary {
+    margin: 0 0 2rem 0;
+  }
+  .DescribedGame img {
+    width: auto;
+    max-height: 500px;
+    height: auto;
+  }
+  .DescribedGame .details {
+    display: flex;
+    flex-direction: row no-wrap;
+    align-items: flex-start;
+    justify-content: center;
+  }
+  .DescribedGame .details article p {
+    width: 29%;
+    margin: 2%;
+  }
+}
