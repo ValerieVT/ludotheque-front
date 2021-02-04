@@ -2,6 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 export default function Home() {
+  function getRandomGame(max) {
+    return Math.floor(Math.random() * Math.floor(max));
+  }
+  const randomGame = getRandomGame(4);
   return (
     <main className="Home">
       <ul className="choices">
@@ -52,7 +56,7 @@ export default function Home() {
         </Link>
       </ul>
       <ul className="half-conteneur">
-        <Link to="/jeux?">
+        <Link to={`/jeux/${randomGame}`}>
           <li className="half">
             <span>Un jeu au hasard</span>
           </li>
