@@ -6,9 +6,12 @@ const Header = () => {
   const { user, logout } = useContext(AuthContext);
   return (
     <header>
-      <Link to="/">
-        <h1>Ludothèque</h1>
-      </Link>
+      <h1>
+        <Link to="/" title="Retour à la page d'accueil">
+          Ludothèque
+        </Link>
+      </h1>
+
       {user && (
         <div>
           <button type="button" onClick={logout}>
@@ -18,7 +21,9 @@ const Header = () => {
       )}
       {user !== {} && (
         <div>
-          <Link to="/connexion">Login</Link>
+          <Link to="/connexion" title="Connexion">
+            Se connecter
+          </Link>
         </div>
       )}
     </header>

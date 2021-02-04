@@ -5,6 +5,9 @@ body {
 }
 h1 {
   font-size: 3rem;
+  width: 25rem;
+  margin: auto;
+  padding: 3rem 0 2rem 0;
 }
 h2,
 h3 {
@@ -20,6 +23,18 @@ li {
 .App a {
   color: #000;
   text-decoration: none;
+}
+
+.App header div {
+  width: 10rem;
+  position: absolute;
+  right: 0rem;
+  top: 0.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+}
+.App header div a:hover {
+  text-decoration: underline;
 }
 
 .Home .choices {
