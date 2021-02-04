@@ -49,7 +49,7 @@ export default function Home() {
             <span>Jeux asymétriques : un rôle différent chacun&nbsp;!</span>
           </li>
         </Link>
-        <Link to="/" className="theme-link">
+        <Link to="/themes" className="theme-link">
           <li className="theme">
             <span>Soirée thématique&nbsp;!</span>
           </li>
