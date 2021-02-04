@@ -23,7 +23,7 @@ export default function App() {
         <Switch>
           <Route path="/jeux/:id" component={DescribedGame} />
           <Route exact path="/jeux" component={Games} />
-          <Route path="/login" component={Login} />
+          <Route path="/connexion" component={Login} />
           <Route path="/admin" component={Admin} />
           <Route exact to="/" component={Home} />
         </Switch>
