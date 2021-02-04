@@ -21,7 +21,8 @@ li {
   text-decoration: none;
 }
 
-.Home {
+.Home .choices {
+  width: 100%;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -29,7 +30,15 @@ li {
   justify-content: center;
   padding: 0;
 }
-.Home li {
+.Home .half-conteneur {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  list-style: none;
+  justify-content: center;
+  padding: 0;
+}
+.Home .choices li {
   height: 9rem;
   width: 9rem;
   background-color: #7a0400;
@@ -43,10 +52,24 @@ li {
   font-weight: bold;
   font-size: 1.1rem;
 }
-.Home li:hover {
+.Home .half-conteneur a {
+  height: 5rem;
+  width: 80%;
+  background-color: #7a0400;
+  color: rgb(179, 142, 142);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem;
+  padding: 0.5rem;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+.Home a:hover {
   background-color: #331615;
 }
-.Home .theme {
+.Home .choices .theme {
   background-color: #8f4d21;
   color: rgb(230, 226, 40);
   width: 20rem;
@@ -55,15 +78,24 @@ li {
   background-color: #590600;
   background-image: url("assets/dark-wood.webp");
   margin-top: 2rem;
+  font-size: 2rem;
+}
+.Home .choices .theme-link:hover {
+  background-color: inherit;
 }
 
 @media only screen and (min-width: 992px) {
-  .Home li {
+  .Home .choices li {
     height: 14rem;
     width: 14rem;
     font-size: 1.4rem;
   }
-  .Home .theme {
+  .Home .choices .theme {
     margin-top: 5rem;
+  }
+  .Home .half-conteneur a {
+    height: 5rem;
+    width: 42%;
+    font-size: 1.4rem;
   }
 }
