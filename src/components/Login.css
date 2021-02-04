@@ -1,0 +1,43 @@
+@import url("https://fonts.googleapis.com/css2?family=Caveat:wght@400&display=swap");
+
+.Login {
+  width: 90%;
+  margin: auto;
+}
+
+.Login label {
+  font-family: "Caveat", "Arial", sans-serif;
+  color: #fff;
+  font-size: 2rem;
+  text-align: center;
+  display: block;
+  margin-bottom: 2rem;
+}
+.Login input {
+  width: 96%;
+  display: block;
+  text-align: center;
+  font-size: 2rem;
+  padding: 2%;
+}
+
+.Login button {
+  background-color: rgb(80, 0, 4);
+  border: none;
+  color: #fff;
+  font-size: 1.8rem;
+  padding: 1rem 2.5rem;
+  margin: 1rem;
+  cursor: pointer;
+}
+
+@media only screen and (min-width: 992px) {
+  .Login {
+    width: 80%;
+  }
+}
+@media only screen and (min-width: 1312px) {
+  .Login {
+    width: 50%;
+  }
+}

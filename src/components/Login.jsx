@@ -3,6 +3,7 @@ import { Redirect } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import AuthContext from "./contexts/auth";
+import "./Login.css";
 
 export default function Login() {
   const [identifier, setIdentifier] = useState("");
