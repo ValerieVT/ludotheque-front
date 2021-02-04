@@ -35,7 +35,12 @@ class Games extends React.Component {
         <h2>La sélection&nbsp;:</h2>
         <ul>
           {listOfGames.map((game) => (
-            <SingleGame name={game.name} image={game.image} key={game.id} />
+            <SingleGame
+              name={game.name}
+              image={game.image}
+              id={game.id}
+              key={game.id}
+            />
           ))}
         </ul>
       </article>
