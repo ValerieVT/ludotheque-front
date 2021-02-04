@@ -38,7 +38,7 @@ class DescribedGame extends React.Component {
             {selectionnedGame.duration_min_in_minuts !== null ? (
               <p>
                 <img className="picto" src="../logos/duree.svg" alt="" />
-                Durée (min)&nbsp;: {selectionnedGame.duration_min_in_minuts}
+                Durée&nbsp;: {selectionnedGame.duration_min_in_minuts}
                 &nbsp;min
               </p>
             ) : (
