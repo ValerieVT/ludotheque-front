@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Walter+Turncoat&display=swap");
+
 body {
   padding: 0;
   background-color: #7a0400;
@@ -87,15 +89,18 @@ li {
 }
 .Home .choices .theme {
   background-color: #8f4d21;
-  color: rgb(230, 226, 40);
+  font-family: "Walter Turncoat", "Arial", sans-serif;
+  font-size: 3rem;
+  color: rgba(230, 227, 40, 0.685);
   width: 20rem;
-  height: 5rem;
+  height: 8rem;
   transform: rotate(-5deg);
   background-color: #590600;
   background-image: url("assets/dark-wood.webp");
-  margin-top: 2rem;
   padding: 1rem 2rem;
-  font-size: 2rem;
+}
+.Home .choices .theme:hover {
+  color: rgb(230, 227, 40);
 }
 .Home .choices .theme-link:hover {
   background-color: inherit;
@@ -108,7 +113,7 @@ li {
     font-size: 1.4rem;
   }
   .Home .choices .theme {
-    margin-top: 5rem;
+    margin-top: 4rem;
   }
   .Home .half-conteneur a {
     height: 5rem;
