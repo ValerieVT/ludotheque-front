@@ -77,8 +77,8 @@ export default function DescribedGame(props) {
           ) : (
             ""
           )}
-          {selectionnedGame.player_agemin !== null &&
-          selectionnedGame.player_agemax === null ? (
+          {selectionnedGame.player_agemin === null &&
+          selectionnedGame.player_agemax !== null ? (
             <p className="wider">
               {selectionnedGame.player_agemin !== null
                 ? `Peut devenir ennuyeux après ${selectionnedGame.player_agemax} ans`
@@ -87,8 +87,8 @@ export default function DescribedGame(props) {
           ) : (
             ""
           )}
-          {selectionnedGame.player_agemin === null &&
-          selectionnedGame.player_agemax !== null ? (
+          {selectionnedGame.player_agemin !== null &&
+          selectionnedGame.player_agemax === null ? (
             <p className="wider">
               {selectionnedGame.player_agemin !== null
                 ? `A partir de ${selectionnedGame.player_agemin} ans`
