@@ -1,21 +1,14 @@
+import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import axios from "axios";
-import React from "react";
 import SingleGame from "./SingleGame";
 import "./Games.css";
 
-class Games extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      listOfGames: [],
-    };
-  }
+export default function Games() {
+  const history = useHistory();
+  const [listOfGames, setListOfGames] = useState([]);
 
-  componentDidMount() {
-    this.fetchGames();
-  }
-
-  fetchGames = () => {
+  const getGames = () => {
     const paramsOfURL = new URLSearchParams(window.location.search);
     const paramsToUse = paramsOfURL.toString();
     const searchWithParamsToUse =
@@ -24,32 +17,45 @@ class Games extends React.Component {
     axios
       .get(url)
       .then((response) => response.data)
-      .then((nouveautesArray) => {
-        this.setState({
-          listOfGames: nouveautesArray,
-        });
+      .then((arrayOfGames) => {
+        setListOfGames(arrayOfGames);
+        console.log(listOfGames.length);
+      })
+      .catch((error) => {
+        console.log(error.response?.data?.error);
+        history.push("/");
       });
   };
 
-  render() {
-    const { listOfGames } = this.state;
+  useEffect(() => {
+    getGames();
+  }, []);
 
-    return (
-      <article className="Games">
-        <h2>La sélection&nbsp;:</h2>
-        <ul>
-          {listOfGames.map((game) => (
-            <SingleGame
-              name={game.name}
-              image={game.image}
-              id={game.id}
-              key={game.id}
-            />
-          ))}
-        </ul>
-      </article>
-    );
-  }
+  return (
+    <article className="Games">
+      <h2>La sélection&nbsp;:</h2>
+      <ul>
+        {listOfGames !== [] && listOfGames.length > 1
+          ? listOfGames.map((game) => (
+              <SingleGame
+                name={game.name}
+                image={game.image}
+                id={game.id}
+                key={game.id}
+              />
+            ))
+          : ""}
+        {listOfGames.hasOwnProperty("name") ? (
+          <SingleGame
+            name={listOfGames.name}
+            image={listOfGames.image}
+            id={listOfGames.id}
+            key={listOfGames.id}
+          />
+        ) : (
+          ""
+        )}
+      </ul>
+    </article>
+  );
 }
-
-export default Games;
