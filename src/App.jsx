@@ -14,7 +14,9 @@ import Admin from "./components/Admin";
 export default function App() {
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/auth/check", { withCredentials: true })
+      .get(`${process.env.REACT_APP_API_URL}auth/check`, {
+        withCredentials: true,
+      })
       .then(() => console.log("success"))
       .catch(() => console.error("error"));
   }, []);
