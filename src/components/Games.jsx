@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import SingleGame from "./SingleGame";
 import "./Games.css";
 
 export default function Games() {
-  const history = useHistory();
   const [listOfGames, setListOfGames] = useState([]);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const getGames = () => {
     const paramsOfURL = new URLSearchParams(window.location.search);
@@ -19,11 +19,9 @@ export default function Games() {
       .then((response) => response.data)
       .then((arrayOfGames) => {
         setListOfGames(arrayOfGames);
-        console.log(listOfGames.length);
       })
       .catch((error) => {
-        console.log(error.response?.data?.error);
-        history.push("/");
+        setErrorMessage(error.response?.data?.error);
       });
   };
 
@@ -34,6 +32,8 @@ export default function Games() {
   return (
     <article className="Games">
       <h2>La sélection&nbsp;:</h2>
+
+      <p className="error-message">{errorMessage}</p>
       <ul>
         {listOfGames !== [] && listOfGames.length > 1
           ? listOfGames.map((game) => (
@@ -56,6 +56,9 @@ export default function Games() {
           ""
         )}
       </ul>
+      <Link to="/" title="Page d'accueil">
+        <p className="retour-hp">Retour à la page d'accueil</p>
+      </Link>
     </article>
   );
 }
