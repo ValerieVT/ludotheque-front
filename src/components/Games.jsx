@@ -33,8 +33,8 @@ export default function Games() {
     <article className="Games">
       <h2>La sélection&nbsp;:</h2>
 
-      <p className="error-message">{errorMessage}</p>
       <ul>
+        <li className="error-message">{errorMessage}</li>
         {listOfGames !== [] && listOfGames.length > 1
           ? listOfGames.map((game) => (
               <SingleGame
@@ -55,10 +55,12 @@ export default function Games() {
         ) : (
           ""
         )}
+        <li className="retour-hp">
+          <Link to="/" title="Page d'accueil">
+            Retour à la page d'accueil
+          </Link>
+        </li>
       </ul>
-      <Link to="/" title="Page d'accueil">
-        <p className="retour-hp">Retour à la page d'accueil</p>
-      </Link>
     </article>
   );
 }
