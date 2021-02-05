@@ -1,9 +1,6 @@
-import React, { useContext } from "react";
-import AuthContext from "./contexts/auth";
 import { Link } from "react-router-dom";
 
 const Header = () => {
-  const { user, logout } = useContext(AuthContext);
   return (
     <header>
       <h1>
@@ -12,20 +9,11 @@ const Header = () => {
         </Link>
       </h1>
 
-      {user && (
-        <div>
-          <button type="button" onClick={logout}>
-            Déconnexion
-          </button>
-        </div>
-      )}
-      {user !== {} && (
-        <div>
-          <Link to="/connexion" title="Connexion">
-            Se connecter
-          </Link>
-        </div>
-      )}
+      <div>
+        <Link to="/connexion" title="Connexion">
+          Se connecter
+        </Link>
+      </div>
     </header>
   );
 };
