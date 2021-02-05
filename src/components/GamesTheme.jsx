@@ -1,52 +1,52 @@
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
-import React from "react";
 import SingleGame from "./SingleGame";
 import "./Games.css";
 
-class GamesTheme extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      listOfGames: [],
-    };
-  }
+export default function GamesTheme(props) {
+  const [listOfGames, setListOfGames] = useState([]);
+  const [errorMessage, setErrorMessage] = useState("");
 
-  componentDidMount() {
-    this.fetchGames();
-  }
-
-  fetchGames = () => {
-    const { id } = this.props.match.params;
+  const getGames = () => {
+    const { id } = props.match.params;
     const url = `${process.env.REACT_APP_API_URL}themes/${id}/jeux/`;
     axios
       .get(url)
       .then((response) => response.data)
-      .then((gamesArray) => {
-        this.setState({
-          listOfGames: gamesArray,
-        });
+      .then((arrayOfGames) => {
+        setListOfGames(arrayOfGames);
+      })
+      .catch((error) => {
+        setErrorMessage(error.response?.data?.error);
       });
   };
 
-  render() {
-    const { listOfGames } = this.state;
+  useEffect(() => {
+    getGames();
+  }, []);
 
-    return (
-      <article className="Games">
-        <h2>La sélection thématique&nbsp;:</h2>
-        <ul>
-          {listOfGames.map((game) => (
-            <SingleGame
-              name={game.name}
-              image={game.image}
-              id={game.id}
-              key={game.id}
-            />
-          ))}
-        </ul>
-      </article>
-    );
-  }
+  return (
+    <article className="Games">
+      <h2>La sélection thématique&nbsp;:</h2>
+      <ul>
+        <li className="error-message">{errorMessage}</li>
+        {listOfGames !== []
+          ? listOfGames.map((game) => (
+              <SingleGame
+                name={game.name}
+                image={game.image}
+                id={game.id}
+                key={game.id}
+              />
+            ))
+          : ""}
+        <li className="retour-hp">
+          <Link to="/themes" title="Page sommaire des thèmes">
+            Retour à la liste des thèmes
+          </Link>
+        </li>
+      </ul>
+    </article>
+  );
 }
-
-export default GamesTheme;
