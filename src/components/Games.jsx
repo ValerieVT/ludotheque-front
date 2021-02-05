@@ -35,7 +35,7 @@ export default function Games() {
 
       <ul>
         <li className="error-message">{errorMessage}</li>
-        {listOfGames !== [] && listOfGames.length > 1
+        {listOfGames !== []
           ? listOfGames.map((game) => (
               <SingleGame
                 name={game.name}
@@ -45,16 +45,6 @@ export default function Games() {
               />
             ))
           : ""}
-        {listOfGames.hasOwnProperty("name") ? (
-          <SingleGame
-            name={listOfGames.name}
-            image={listOfGames.image}
-            id={listOfGames.id}
-            key={listOfGames.id}
-          />
-        ) : (
-          ""
-        )}
         <li className="retour-hp">
           <Link to="/" title="Page d'accueil">
             Retour à la page d'accueil
