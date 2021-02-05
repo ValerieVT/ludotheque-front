@@ -3,7 +3,9 @@ import { Link } from "react-router-dom";
 
 export default function Home() {
   function getRandomGame(max) {
-    return Math.floor(Math.random() * Math.floor(max));
+    let resultat = Math.floor(Math.random() * Math.floor(max));
+    if (resultat === 0) resultat = 1;
+    return resultat;
   }
   const randomGame = getRandomGame(4);
   return (
