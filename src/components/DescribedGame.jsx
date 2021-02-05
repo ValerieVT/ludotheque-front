@@ -26,12 +26,19 @@ export default function DescribedGame(props) {
     getGame();
   }, []);
 
+  const pictures = selectionnedGame["0"];
+
   return (
     <main className="DescribedGame">
       <h2>{selectionnedGame.name}</h2>
       <p className="summary">{selectionnedGame.summary}</p>
       <div className="details">
-        <img src="../jeux/a.webp" alt="" />
+        {pictures !== undefined
+          ? pictures.map((pic) => (
+              <img src={pic.image} alt={selectionnedGame.name} />
+            ))
+          : ""}
+
         <article>
           {selectionnedGame.duration_min_in_minuts !== null ? (
             <p>
