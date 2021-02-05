@@ -1,15 +1,13 @@
-import React, { useState, useContext } from "react";
-import { Redirect } from "react-router-dom";
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
-import AuthContext from "./contexts/auth";
 import "./Login.css";
 
 export default function Login() {
   const [identifier, setIdentifier] = useState("");
   const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
   const history = useHistory();
-  const { user, setUser } = useContext(AuthContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -20,18 +18,19 @@ export default function Login() {
       })
       .then((res) => {
         console.log(res.data);
-        setUser(res.data);
       })
       .then(() => {
         history.push("/admin");
+      })
+      .catch((error) => {
+        setErrorMessage(error.response?.data?.error);
       });
   };
-
-  if (user) return <Redirect to="/" />;
 
   return (
     <form className="Login" onSubmit={handleSubmit}>
       <h2>Connecte-toi pour ajouter ou modifier des jeux&nbsp;!</h2>
+      <p className="error-message">{errorMessage}</p>
 
       <label htmlFor="identifier">
         Identifiant&nbsp;:
