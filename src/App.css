@@ -7,9 +7,12 @@ body {
 }
 h1 {
   font-size: 3rem;
-  width: 25rem;
+  font-family: "Walter Turncoat", "Arial", sans-serif;
+  text-transform: uppercase;
+  text-align: center;
+  width: 100%;
   margin: auto;
-  padding: 3rem 0 2rem 0;
+  padding: 3rem 0 0 0;
 }
 h2,
 h3 {
@@ -107,6 +110,9 @@ li {
 }
 
 @media only screen and (min-width: 992px) {
+  h1 {
+    font-size: 6rem;
+  }
   .Home .choices li {
     height: 14rem;
     width: 14rem;
