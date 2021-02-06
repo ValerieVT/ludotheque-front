@@ -10,13 +10,14 @@
 .DescribedGame h2 {
   font-size: 4rem;
 }
-.DescribedGame img {
-  width: 90%;
-  height: auto;
-}
 .DescribedGame .summary {
   font-size: 2rem;
   margin: 0 0 0.5rem 0;
+}
+.DescribedGame .details {
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
 }
 .DescribedGame .details article {
   font-size: 1.8rem;
@@ -42,6 +43,45 @@
   max-height: 200px;
 }
 
+/* ----- start carousel ------*/
+.DescribedGame .list-buttons {
+  width: 100%;
+  display: flex;
+  flex-flow: row no-wrap;
+  align-items: flex-start;
+  justify-content: center;
+}
+.DescribedGame .button-slider {
+  width: 1.2rem;
+  height: 1.2rem;
+  border-radius: 100%;
+  border: solid 0.6rem rgb(80, 0, 4);
+  background-color: rgba(209, 209, 209, 0.5);
+  margin: -3.8rem 1rem 0 0;
+  cursor: pointer;
+}
+.DescribedGame .button-slider:hover {
+  background-color: rgba(148, 148, 148, 0.432);
+  border: solid 0.6rem rgba(255, 255, 255, 0.829);
+  box-shadow: 0px 0px 20px #fff;
+}
+.DescribedGame .slider {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: flex-start;
+  justify-content: center;
+}
+.DescribedGame .slider img {
+  min-width: 400px;
+  width: 100%;
+  max-width: 800px;
+  height: auto;
+  max-height: 800px;
+}
+/* ----- end carousel ------*/
+
 @media only screen and (min-width: 992px) {
   .DescribedGame {
     margin-bottom: 0;
@@ -49,8 +89,9 @@
   .DescribedGame .summary {
     margin: 0 0 2rem 0;
   }
-  .DescribedGame img {
+  .DescribedGame .slider img {
     width: auto;
+    max-width: 500px;
     max-height: 500px;
     height: auto;
   }
