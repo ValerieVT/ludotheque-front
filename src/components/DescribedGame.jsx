@@ -6,6 +6,7 @@ import "./DescribedGame.css";
 export default function DescribedGame(props) {
   const history = useHistory();
   const [selectionnedGame, setSelectionnedGame] = useState([]);
+  const [selectionnedPicture, setSelectionnedPicture] = useState("");
 
   const getGame = () => {
     const { id } = props.match.params;
@@ -26,19 +27,38 @@ export default function DescribedGame(props) {
     getGame();
   }, []);
 
+  const chosenPicture = (index) => {
+    setSelectionnedPicture(pictures[index].image);
+  };
+
   const pictures = selectionnedGame["0"];
+  const firstPicture =
+    pictures !== undefined ? pictures.find((e) => e !== undefined) : "";
 
   return (
     <main className="DescribedGame">
       <h2>{selectionnedGame.name}</h2>
+
       <p className="summary">{selectionnedGame.summary}</p>
       <div className="details">
-        {pictures !== undefined
-          ? pictures.map((pic) => (
-              <img src={pic.image} alt={selectionnedGame.name} />
-            ))
-          : ""}
-
+        <div className="slider">
+          {selectionnedPicture === "" ? (
+            <img src={firstPicture.image} alt={selectionnedGame.name} />
+          ) : (
+            <img src={selectionnedPicture} alt={selectionnedGame.name} />
+          )}
+          <div className="list-buttons">
+            {pictures !== undefined && pictures.length >= 2
+              ? pictures.map((btn, index) => (
+                  <div
+                    className="button-slider"
+                    key={index}
+                    onClick={() => chosenPicture(index)}
+                  />
+                ))
+              : ""}
+          </div>
+        </div>
         <article>
           {selectionnedGame.duration_min_in_minuts !== null ? (
             <p>
