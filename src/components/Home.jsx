@@ -40,12 +40,12 @@ export default function Home() {
             <span>Je veux me lancer sur une règle du jeu compliquée</span>
           </li>
         </Link>
-        <Link to="/jeux?duration_min_in_minuts=15" title="Jeux courts">
+        <Link to="/jeux?duration_max=16" title="Jeux courts">
           <li>
             <span>On joue, mais pas longtemps&nbsp;!</span>
           </li>
         </Link>
-        <Link to="/jeux?duration_min_in_minuts=90" title="Jeux longs">
+        <Link to="/jeux?duration_min=90" title="Jeux longs">
           <li>
             <span>Je veux occuper toute ma soirée&nbsp;!</span>
           </li>
