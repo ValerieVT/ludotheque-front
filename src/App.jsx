@@ -9,7 +9,7 @@ import Games from "./components/Games";
 import GamesTheme from "./components/GamesTheme";
 import DescribedGame from "./components/DescribedGame";
 import Login from "./components/Login";
-import Admin from "./components/Admin";
+import Admin from "./components/admin/Admin";
 
 export default function App() {
   useEffect(() => {
