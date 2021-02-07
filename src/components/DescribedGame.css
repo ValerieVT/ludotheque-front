@@ -79,6 +79,7 @@
   max-width: 800px;
   height: auto;
   max-height: 800px;
+  border: solid 0.8rem rgb(80, 0, 4);
 }
 /* ----- end carousel ------*/
 
