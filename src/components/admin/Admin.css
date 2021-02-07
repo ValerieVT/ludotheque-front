@@ -1,0 +1,77 @@
+@import url("https://fonts.googleapis.com/css2?family=Walter+Turncoat&display=swap");
+
+.Admin {
+  text-align: center;
+  font-family: "Walter Turncoat", "Arial", sans-serif;
+}
+.Admin .choices {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  list-style: none;
+  justify-content: center;
+  padding: 0;
+}
+.Admin h2 {
+  font-weight: 100;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  color: #fff;
+  margin: 0rem auto 3rem auto;
+}
+
+.Admin .choices a {
+  width: 65%;
+  background-color: #331615;
+  color: #fff;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem;
+  padding: 0.7rem;
+  font-size: 1.8rem;
+}
+.Admin .chercher {
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  color: #fff;
+  margin: 4rem auto 1rem auto;
+  width: 65%;
+}
+.Admin form {
+  width: 100%;
+}
+.Admin form label {
+  color: #fff;
+  display: block;
+  width: 65%;
+  margin: auto;
+}
+.Admin form label input {
+  width: 100%;
+  margin: auto;
+  text-align: center;
+  font-size: 1.6rem;
+  padding: 0.4rem 0;
+  font-family: "Walter Turncoat", "Arial", sans-serif;
+  text-transform: uppercase;
+}
+.Admin form button {
+  width: 6rem;
+  background-color: #331615;
+  color: #fff;
+  border: none;
+  margin: 1rem auto 3rem auto;
+  padding: 0.5rem;
+  font-family: "Walter Turncoat", "Arial", sans-serif;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+@media only screen and (min-width: 992px) {
+  .Admin .choices a {
+    width: 25%;
+  }
+}
