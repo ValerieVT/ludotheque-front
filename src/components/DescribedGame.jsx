@@ -150,7 +150,7 @@ export default function DescribedGame(props) {
           ) : (
             ""
           )}
-          {selectionnedGame.reflexionRéflexion !== null ? (
+          {selectionnedGame.reflexion !== null ? (
             <p>Réflexion : {selectionnedGame.reflexion}/3</p>
           ) : (
             ""
