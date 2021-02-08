@@ -86,10 +86,20 @@ export default function DescribedGame(props) {
             ""
           )}
           {selectionnedGame.player_nbmin !== null &&
-          selectionnedGame.player_nbmax !== null ? (
+          selectionnedGame.player_nbmax !== null &&
+          selectionnedGame.player_nbmin !== selectionnedGame.player_nbmax ? (
             <p className="wider">
               De {selectionnedGame.player_nbmin} à{" "}
               {selectionnedGame.player_nbmax} joueurs
+            </p>
+          ) : (
+            ""
+          )}
+          {selectionnedGame.player_nbmin !== null &&
+          selectionnedGame.player_nbmax !== null &&
+          selectionnedGame.player_nbmin === selectionnedGame.player_nbmax ? (
+            <p className="wider">
+              Pour {selectionnedGame.player_nbmin} joueurs
             </p>
           ) : (
             ""
