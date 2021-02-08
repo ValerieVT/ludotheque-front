@@ -1,13 +1,27 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 export default function Home() {
-  function getRandomGame(max) {
-    let resultat = Math.floor(Math.random() * Math.floor(max));
-    if (resultat === 0) resultat = 1;
-    return resultat;
-  }
-  const randomGame = getRandomGame(4);
+  const [randomGame, setRandomGame] = useState(1);
+
+  const getGames = () => {
+    const url = `${process.env.REACT_APP_API_URL}jeux/random`;
+    axios
+      .get(url)
+      .then((response) => response.data)
+      .then((randomId) => {
+        setRandomGame(randomId.id);
+      })
+      .catch((error) => {
+        console.error(error.response?.data?.error);
+      });
+  };
+
+  useEffect(() => {
+    getGames();
+  }, []);
+
   return (
     <main className="Home">
       <ul className="choices">
