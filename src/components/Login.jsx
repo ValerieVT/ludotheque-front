@@ -13,7 +13,7 @@ export default function Login() {
     e.preventDefault();
     const payload = { identifier, password };
     axios
-      .post("http://localhost:5000/api/auth/login", payload, {
+      .post(`${process.env.REACT_APP_API_URL}auth/login`, payload, {
         withCredentials: true,
       })
       .then((res) => {
