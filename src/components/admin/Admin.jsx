@@ -11,7 +11,7 @@ const Admin = () => {
   const history = useHistory();
   useEffect(() => {
     axios
-      .get(`${process.env.REACT_APP_API_URL}auth/check`, {
+      .get(`${process.env.REACT_APP_API_URL}auth/admin`, {
         withCredentials: true,
       })
       .then(() => console.log("tu es connecté"))
