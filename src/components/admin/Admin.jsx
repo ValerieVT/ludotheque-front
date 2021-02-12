@@ -21,7 +21,9 @@ const Admin = () => {
   const { path } = useRouteMatch();
   return (
     <article className="Admin">
-      <h2>L'arrière-salle</h2>
+      <h2>
+        <Link to={`${path}`}>L'arrière-salle</Link>
+      </h2>
       <Switch>
         <Route path={`${path}/photos`} component={AdminPictures} />
         <Route path={`${path}/themes`} component={AdminThemes} />
