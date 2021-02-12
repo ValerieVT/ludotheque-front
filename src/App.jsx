@@ -1,7 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "./App.css";
 import { Route, Switch } from "react-router-dom";
-import axios from "axios";
 import Home from "./components/Home";
 import Header from "./components/Header";
 import Themes from "./components/Themes";
@@ -12,14 +11,6 @@ import Login from "./components/Login";
 import Admin from "./components/admin/Admin";
 
 export default function App() {
-  useEffect(() => {
-    axios
-      .get(`${process.env.REACT_APP_API_URL}auth/check`, {
-        withCredentials: true,
-      })
-      .then(() => console.log("success"))
-      .catch(() => console.error("error"));
-  }, []);
   return (
     <div className="App">
       <Header />
