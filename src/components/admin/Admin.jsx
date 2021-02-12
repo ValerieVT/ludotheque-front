@@ -1,5 +1,6 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect } from "react";
+import axios from "axios";
+import { Link, useHistory } from "react-router-dom";
 import { Route, Switch, useRouteMatch } from "react-router-dom";
 import AdminPictures from "./AdminPictures";
 import AdminThemes from "./AdminThemes";
@@ -7,6 +8,16 @@ import AdminGames from "./AdminGames";
 import "./Admin.css";
 
 const Admin = () => {
+  const history = useHistory();
+  useEffect(() => {
+    axios
+      .get(`${process.env.REACT_APP_API_URL}auth/check`, {
+        withCredentials: true,
+      })
+      .then(() => console.log("tu es connecté"))
+      .catch(() => history.push("/"));
+  }, []);
+
   const { path } = useRouteMatch();
   return (
     <article className="Admin">
