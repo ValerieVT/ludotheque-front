@@ -1,3 +1,11 @@
+.Games h2 {
+  font-family: "Walter Turncoat", "Arial", sans-serif;
+  font-size: 2rem;
+  color: #fff;
+}
+.Games h3 {
+  margin: 0.4rem 0;
+}
 .Games ul {
   list-style-type: none;
   display: flex;
@@ -30,4 +38,107 @@
   padding: 1rem 2rem;
   margin: auto;
   width: 15rem;
+}
+
+.Games .filters {
+  text-align: center;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+.Games .filters > button {
+  width: auto;
+  min-width: 15%;
+  margin: 0.3rem auto;
+  display: block;
+  background-color: #7a0400;
+  border: none;
+  color: rgb(179, 142, 142);
+  font-weight: bold;
+  font-size: 0.9rem;
+  padding: 0.7rem 1rem;
+  cursor: pointer;
+  z-index: 50;
+}
+.Games .filters > button:hover {
+  box-shadow: 0 0 0 0.5rem #590600;
+}
+.Games .filters form {
+  height: 0rem;
+  top: -0.5rem;
+  position: relative;
+  overflow: hidden;
+  width: 90%;
+  background-color: #59060056;
+  padding-bottom: 0;
+}
+.deployed {
+  height: auto !important;
+  padding-bottom: 1.5rem !important;
+  transition-duration: 0.5s;
+}
+.Games .filters form ul li {
+  width: 100%;
+  margin: 0.5rem 0;
+  padding: 0 2%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.Games .filters form button {
+  background-color: #7a0400;
+  color: rgb(179, 142, 142);
+  font-weight: bold;
+  border: none;
+  padding: 1rem;
+  cursor: pointer;
+  margin: 1rem;
+}
+.Games .filters form button:hover {
+  box-shadow: 0 0 0 1rem #590600;
+}
+/* options displayed as playcards */
+.Games .option-cards input:not(checked),
+.Games .option-cards input:checked {
+  position: absolute;
+  left: -9999px;
+  width: 0;
+  height: 0;
+  visibility: hidden;
+}
+.Games .option-cards input:not(checked) + label {
+  word-wrap: break-word;
+  height: 2.5rem;
+  width: 4.5rem;
+  background-color: rgb(10, 54, 9);
+  border-radius: 0.8rem;
+  padding: 2rem 0.3rem;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.411);
+  font-size: 0.8rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition-duration: 0.5s;
+  background-image: url("../assets/vichy.webp");
+  box-shadow: -2px 2px 5px rgb(0, 0, 0);
+}
+.Games .option-cards input:checked + label {
+  word-wrap: break-word;
+  background: linear-gradient(
+    298deg,
+    rgb(158, 158, 158),
+    rgb(241, 241, 241),
+    rgb(158, 158, 158)
+  );
+  cursor: pointer;
+  color: #000;
+  transition-duration: 0.5s;
+}
+
+@media only screen and (min-width: 1312px) {
+  .Games .filters form ul li {
+    width: 33%;
+  }
 }
