@@ -75,27 +75,49 @@ export default function Games() {
               </label>
             </li>
             <li>
-              <label>
-                Durée de la partie
-                <input />
+              <label className="fullwidth">
+                Durée de la partie (min)
+                <ReactSlider
+                  className="horizontal-slider"
+                  thumbClassName="thumb"
+                  trackClassName="track"
+                  min={10}
+                  max={180}
+                  renderThumb={(props, state) => (
+                    <div {...props}>{state.valueNow}</div>
+                  )}
+                />
               </label>
             </li>
             <li>
-              <label>
+              <label className="fullwidth">
                 Nombre de joueurs
-                <input />
+                <ReactSlider
+                  className="horizontal-slider"
+                  thumbClassName="thumb"
+                  trackClassName="track"
+                  min={1}
+                  max={8}
+                  defaultValue={3}
+                  renderThumb={(props, state) => (
+                    <div {...props}>{state.valueNow}</div>
+                  )}
+                />
               </label>
             </li>
             <li>
-              <label>
+              <label className="fullwidth">
                 Difficulté de la règle du jeu
-                <input />
-              </label>
-            </li>
-            <li>
-              <label>
-                Nombre de joueurs
-                <input />
+                <ReactSlider
+                  className="horizontal-slider"
+                  thumbClassName="thumb"
+                  trackClassName="track"
+                  min={1}
+                  max={3}
+                  renderThumb={(props, state) => (
+                    <div {...props}>{state.valueNow}</div>
+                  )}
+                />
               </label>
             </li>
             <li className="option-cards">
