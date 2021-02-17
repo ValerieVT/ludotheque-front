@@ -7,6 +7,7 @@ import "./Games.css";
 export default function Games() {
   const [listOfGames, setListOfGames] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
+  const [filtersDeployed, setFiltersDeployed] = useState("");
 
   const getGames = () => {
     const paramsOfURL = new URLSearchParams(window.location.search);
@@ -32,7 +33,68 @@ export default function Games() {
   return (
     <article className="Games">
       <h2>La sélection&nbsp;:</h2>
-
+      <div className="filters">
+        <button
+          onClick={() => {
+            filtersDeployed === ""
+              ? setFiltersDeployed("deployed")
+              : setFiltersDeployed("");
+          }}
+        >
+          {filtersDeployed === ""
+            ? "Filtrer ce résultat"
+            : "Masquer les filtres"}
+        </button>
+        <form className={filtersDeployed}>
+          <ul>
+            <li>
+              <label>
+                Age des joueurs
+                <input />
+              </label>
+            </li>
+            <li>
+              <label>
+                Durée de la partie
+                <input />
+              </label>
+            </li>
+            <li>
+              <label>
+                Nombre de joueurs
+                <input />
+              </label>
+            </li>
+            <li>
+              <label>
+                Difficulté de la règle du jeu
+                <input />
+              </label>
+            </li>
+            <li>
+              <label>
+                Nombre de joueurs
+                <input />
+              </label>
+            </li>
+            <li className="option-cards">
+              <input type="checkbox" id="chance" name="chance" />
+              <label htmlFor="chance">chance</label>
+              <input type="checkbox" id="reflexion" name="reflexion" />
+              <label htmlFor="reflexion">réflexion</label>
+              <input type="checkbox" id="adresse" name="adresse" />
+              <label htmlFor="adresse">adresse</label>
+              <input
+                type="checkbox"
+                id="culturegenerale"
+                name="culturegenerale"
+              />
+              <label htmlFor="culturegenerale">culture générale</label>
+            </li>
+          </ul>
+          <button type="submit">Je veux voir les résultats !</button>
+        </form>
+      </div>
       <ul>
         <li className="error-message">{errorMessage}</li>
         {listOfGames !== []
