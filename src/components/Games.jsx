@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import SingleGame from "./SingleGame";
 import "./Games.css";
+import ReactSlider from "react-slider";
 
 export default function Games() {
   const [listOfGames, setListOfGames] = useState([]);
@@ -45,12 +46,32 @@ export default function Games() {
             ? "Filtrer ce résultat"
             : "Masquer les filtres"}
         </button>
+
         <form className={filtersDeployed}>
           <ul>
             <li>
-              <label>
+              <label className="fullwidth">
                 Age des joueurs
-                <input />
+                <ReactSlider
+                  className="horizontal-slider"
+                  thumbClassName="thumb"
+                  trackClassName="track"
+                  min={3}
+                  max={20}
+                  defaultValue={[18, 20]}
+                  ariaLabel={[
+                    "Age du plus jeune joueur",
+                    "Age du plus vieux joueur",
+                  ]}
+                  ariaValuetext={(state) =>
+                    `Age sélectionné : ${state.valueNow}`
+                  }
+                  renderThumb={(props, state) => (
+                    <div {...props}>{state.valueNow}</div>
+                  )}
+                  pearling
+                  minDistance={2}
+                />
               </label>
             </li>
             <li>
