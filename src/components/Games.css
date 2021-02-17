@@ -99,6 +99,51 @@
 .Games .filters form button:hover {
   box-shadow: 0 0 0 1rem #590600;
 }
+
+.fullwidth {
+  width: 90%;
+}
+
+/* slider with 2 markers */
+.horizontal-slider {
+  min-height: 2rem;
+  margin: 0.2rem auto 1rem auto;
+}
+.horizontal-slider .track {
+  top: 20px;
+  height: 10px;
+}
+.track {
+  background: #590600 none repeat scroll 0% 0%;
+}
+.track.track-1 {
+  background: rgb(255, 255, 255) none repeat scroll 0% 0%;
+}
+.track.track-2 {
+  background: #590600 none repeat scroll 0% 0%;
+}
+.thumb {
+  font-size: 0.9em;
+  font-weight: bold;
+  text-align: center;
+  background: linear-gradient(
+    298deg,
+    rgb(158, 158, 158),
+    rgb(241, 241, 241),
+    rgb(158, 158, 158)
+  );
+  border-radius: 0.2rem;
+  color: #000;
+  cursor: pointer;
+  box-sizing: border-box;
+  width: 2.2rem;
+  height: 2.8rem;
+  padding-bottom: 0.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 /* options displayed as playcards */
 .Games .option-cards input:not(checked),
 .Games .option-cards input:checked {
