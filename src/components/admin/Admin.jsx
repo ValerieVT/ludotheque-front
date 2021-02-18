@@ -5,6 +5,7 @@ import { Route, Switch, useRouteMatch } from "react-router-dom";
 import AdminPictures from "./AdminPictures";
 import AdminThemes from "./AdminThemes";
 import AdminGames from "./AdminGames";
+import AdminGamesNotDisplayed from "./AdminGamesNotDisplayed";
 import "./Admin.css";
 
 const Admin = () => {
@@ -42,11 +43,11 @@ const Admin = () => {
             </Link>
             <Link to={`${path}/jeux`} title="Ajouter un jeu">
               <li>
-                <span>Ajouter ou modifier un&nbsp;jeu</span>
+                <span>Ajouter un&nbsp;jeu</span>
               </li>
             </Link>
           </ul>
-          <p className="chercher">Chercher si un jeu est déjà en base&nbsp;:</p>
+          <p className="chercher">Modifier un jeu&nbsp;:</p>
           <form>
             <label htmlFor="jeuEnStock">
               <input type="text" id="jeuEnStock"></input>
