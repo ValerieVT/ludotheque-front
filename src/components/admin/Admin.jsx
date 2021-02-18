@@ -54,6 +54,7 @@ const Admin = () => {
             </label>
             <button type="submit">Go !</button>
           </form>
+          <AdminGamesNotDisplayed />
         </Route>
       </Switch>
     </article>
