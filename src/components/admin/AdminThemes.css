@@ -1,0 +1,66 @@
+.AdminThemes .themes {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  list-style: none;
+  justify-content: center;
+  padding: 0 0 1rem 0;
+  background-color: #59060056;
+}
+.AdminThemes .new-theme {
+  width: 100%;
+}
+.AdminThemes .themes ul {
+  list-style-type: none;
+}
+.AdminThemes .themes li {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem;
+  font-size: 1.8rem;
+}
+.AdminThemes label {
+  display: block;
+  margin: auto;
+  width: 80%;
+  font-size: 1.5rem;
+  color: #fff;
+}
+.AdminThemes input {
+  font-family: "Rajdhani" !important;
+  text-transform: inherit !important;
+  width: 100%;
+  margin: auto;
+  text-align: center;
+  font-size: 1.6rem;
+  padding: 0.4rem 0;
+}
+.AdminThemes button {
+  width: 80% !important;
+  font-family: "Rajdhani" !important;
+  width: 6rem;
+  background-color: #331615;
+  color: #fff;
+  border: none;
+  margin: 1rem auto 0.5rem auto;
+  padding: 0.5rem;
+  font-family: "Walter Turncoat", "Arial", sans-serif;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+.AdminThemes a {
+  color: #fff;
+}
+.AdminThemes a:hover {
+  text-shadow: 2px 2px 5px #d1d1d17c, -2px -2px 5px #d1d1d18f;
+}
+.AdminThemes .error-message {
+  font-family: "Caveat", "Arial", sans-serif;
+  font-size: 3rem;
+  font-weight: bold;
+  color: rgb(80, 0, 4);
+  margin: 0 0.5rem 3rem 0.5rem;
+}
