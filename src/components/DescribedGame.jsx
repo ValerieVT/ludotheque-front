@@ -150,23 +150,31 @@ export default function DescribedGame(props) {
             ""
           )}
 
-          {selectionnedGame.generalknowledge !== null ? (
+          {selectionnedGame.generalknowledge === "1" ||
+          selectionnedGame.generalknowledge === "2" ||
+          selectionnedGame.generalknowledge === "3" ? (
             <p>Culture générale : {selectionnedGame.generalknowledge}/3</p>
           ) : (
             ""
           )}
-          {selectionnedGame.chance !== null ? (
+          {selectionnedGame.chance === "1" ||
+          selectionnedGame.chance === "2" ||
+          selectionnedGame.chance === "3" ? (
             <p>Chance : {selectionnedGame.chance}/3</p>
           ) : (
             ""
           )}
-          {selectionnedGame.reflexion !== null ? (
-            <p>Réflexion : {selectionnedGame.reflexion}/3</p>
+          {selectionnedGame.reflection === "1" ||
+          selectionnedGame.reflection === "2" ||
+          selectionnedGame.reflection === "3" ? (
+            <p>Réflexion : {selectionnedGame.reflection}/3</p>
           ) : (
             ""
           )}
 
-          {selectionnedGame.skill !== null ? (
+          {selectionnedGame.skill === "1" ||
+          selectionnedGame.skill === "2" ||
+          selectionnedGame.skill === "3" ? (
             <p>Adresse : {selectionnedGame.skill}/3</p>
           ) : (
             ""
