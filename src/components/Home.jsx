@@ -26,7 +26,7 @@ export default function Home() {
     <main className="Home">
       <ul className="choices">
         <Link
-          to="/jeux?gamerule_difficulty=1&reflection=1"
+          to="/jeux?gamerule_difficulty=1&reflection=0"
           title="Jeux simples, sans réflexion"
         >
           <li>
