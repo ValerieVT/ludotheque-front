@@ -4,7 +4,7 @@ import { Link, useHistory } from "react-router-dom";
 import { Route, Switch, useRouteMatch } from "react-router-dom";
 import AdminPictures from "./AdminPictures";
 import AdminThemes from "./AdminThemes";
-import AdminGames from "./AdminGames";
+import AdminGame from "./AdminGame";
 import AdminGamesNotDisplayed from "./AdminGamesNotDisplayed";
 import "./Admin.css";
 
@@ -20,6 +20,7 @@ const Admin = () => {
   }, []);
 
   const { path } = useRouteMatch();
+
   return (
     <article className="Admin">
       <h2>
@@ -28,7 +29,7 @@ const Admin = () => {
       <Switch>
         <Route path={`${path}/photos`} component={AdminPictures} />
         <Route path={`${path}/themes`} component={AdminThemes} />
-        <Route exact path={`${path}/jeux`} component={AdminGames} />
+        <Route exact path={`${path}/jeux`} component={AdminGame} />
         <Route exact path={`${path}/`}>
           <ul className="choices">
             <Link to={`${path}/photos`} title="Ajouter des photos">
