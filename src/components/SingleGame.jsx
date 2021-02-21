@@ -7,7 +7,10 @@ function SingleGame(props) {
   return (
     <li className="SingleGame">
       <Link to={`/jeux/${id}`}>
-        <img src={image} alt={name} />
+        <img
+          src={`${process.env.REACT_APP_API_PICTURES_URL}${image}`}
+          alt={name}
+        />
       </Link>
       <h3>{name}</h3>
     </li>
