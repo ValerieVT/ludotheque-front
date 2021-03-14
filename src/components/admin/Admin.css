@@ -18,9 +18,13 @@
   font-size: 1.5rem;
   text-transform: uppercase;
   color: #fff;
-  margin: 0rem auto 3rem auto;
+  margin: 0rem auto 1rem auto;
 }
-
+.Admin h3 {
+  color: #fff;
+  font-weight: 100;
+  font-size: 1.5rem;
+}
 .Admin .choices a {
   width: 65%;
   background-color: #331615;
@@ -37,7 +41,7 @@
   font-size: 1.3rem;
   text-transform: uppercase;
   color: #fff;
-  margin: 4rem auto 1rem auto;
+  margin: 1.5rem auto 1rem auto;
   width: 65%;
 }
 .Admin form {
@@ -63,7 +67,7 @@
   background-color: #331615;
   color: #fff;
   border: none;
-  margin: 1rem auto 3rem auto;
+  margin: 1rem auto 2rem auto;
   padding: 0.5rem;
   font-family: "Walter Turncoat", "Arial", sans-serif;
   font-size: 1.5rem;
