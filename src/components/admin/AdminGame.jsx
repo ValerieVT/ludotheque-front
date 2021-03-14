@@ -1,12 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import ReactSlider from "react-slider";
+import axios from "axios";
 import "./AdminGame.css";
 
 const AdminGame = () => {
   const [infoMessage, setInfoMessage] = useState("");
   const [valueName, setValueName] = useState("");
-  const [valueAgeMin, setValueAgeMin] = useState();
-  const [valueAgeMax, setValueAgeMax] = useState();
+  const [valueSummary, setValueSummary] = useState("");
+  const [valueAgeMin, setValueAgeMin] = useState(0);
+  const [valueAgeMax, setValueAgeMax] = useState(0);
   const [valueDuration, setValueDuration] = useState(0);
   const [valueNumberOfPlayersMin, setValueNumberOfPlayersMin] = useState(0);
   const [valueNumberOfPlayersMax, setValueNumberOfPlayersMax] = useState(0);
@@ -15,8 +18,9 @@ const AdminGame = () => {
   const [valueReflection, setValueReflection] = useState(0);
   const [valueSkill, setValueSkill] = useState(0);
   const [valueKnowledge, setValueKnowledge] = useState(0);
-  const [valueAsymetric, setValueAsymetric] = useState();
-  const [valueCollaborative, setValueCollaborative] = useState();
+  const [valueAsymetric, setValueAsymetric] = useState(0);
+  const [valueCollaborative, setValueCollaborative] = useState(0);
+  const history = useHistory();
 
   const assignValue = (valueTargetted) => {
     if (valueTargetted === 0) {
@@ -26,21 +30,83 @@ const AdminGame = () => {
     }
   };
 
+  const savingSubmit = (e) => {
+    e.preventDefault();
+    const url = `${process.env.REACT_APP_API_URL}auth/admin/jeux/`;
+    console.log(`name: ${valueName},
+      summary: ${valueSummary},
+      duration_min_in_minuts: ${valueDuration},
+      player_nbmin: ${valueNumberOfPlayersMin},
+      player_nbmax: ${valueNumberOfPlayersMax},
+      player_agemin: ${valueAgeMin},
+      player_agemax: ${valueAgeMax},
+      collaborative: ${valueCollaborative},
+      asymetric: ${valueAsymetric},
+      gamerule_difficulty: ${valueRules},
+      generalknowledge: ${valueKnowledge},
+      chance: ${valueChance},
+      reflection: ${valueReflection},
+      skill: ${valueSkill}`);
+    if (
+      valueDuration === 0 ||
+      valueAgeMin === 0 ||
+      valueAgeMax === 0 ||
+      valueNumberOfPlayersMin === 0 ||
+      valueNumberOfPlayersMax === 0
+    ) {
+      setInfoMessage("Remplis tous les champs obligatoires !");
+    } else {
+      axios
+        .post(
+          url,
+          {
+            name: valueName,
+            summary: valueSummary,
+            duration_min_in_minuts: valueDuration,
+            player_nbmin: valueNumberOfPlayersMin,
+            player_nbmax: valueNumberOfPlayersMax,
+            player_agemin: valueAgeMin,
+            player_agemax: valueAgeMax,
+            collaborative: valueCollaborative,
+            asymetric: valueAsymetric,
+            gamerule_difficulty: valueRules.toString(),
+            generalknowledge: valueKnowledge.toString(),
+            chance: valueChance.toString(),
+            reflection: valueReflection.toString(),
+            skill: valueSkill.toString(),
+          },
+          { headers: { "Content-Type": "application/json" } }
+        )
+        .then((response) => response.data)
+        .then((newGame) => {
+          setInfoMessage(
+            `Le jeu "${newGame[0].name}" vient d'être créé ! N'oublie pas d'y ajouter des photos !`
+          );
+          setTimeout(() => history.push("/admin"), 8000);
+        })
+        .catch((error) => {
+          setInfoMessage(error.response?.data?.error);
+        });
+    }
+  };
+
   return (
     <article className="AdminGame">
       <h3>Ajouter ou modifier un jeu</h3>
-      <form>
+      <form onSubmit={savingSubmit}>
         <ul>
+          <li className="error-message">{infoMessage}</li>
           <li>
             <label htmlFor="name">
-              Tu as sélectionné :
+              Nom du jeu* :
               <input
                 id="name"
                 name="name"
                 type="text"
                 placeholder="Nom du jeu"
                 value={valueName}
-                onChange={(e) => setValueName(assignValue(valueName))}
+                onChange={(e) => setValueName(e.target.value)}
+                required
               />
             </label>
           </li>
@@ -50,8 +116,10 @@ const AdminGame = () => {
               <textarea
                 id="summary"
                 name="summary"
-                maxlength="600"
+                maxLength="600"
                 placeholder="Résumé qui donne envie de jouer"
+                value={valueSummary}
+                onChange={(e) => setValueSummary(e.target.value)}
               />
             </label>
           </li>
@@ -86,7 +154,7 @@ const AdminGame = () => {
           </li>
           <li>
             <label className="fullwidth" htmlFor="duration_min_in_minuts">
-              Durée de la partie (en minutes)
+              Durée de la partie (en minutes)*
               <input
                 id="duration_min_in_minuts"
                 name="duration_min_in_minuts"
@@ -94,6 +162,7 @@ const AdminGame = () => {
                 placeholder="10"
                 value={valueDuration}
                 onChange={(e) => setValueDuration(e.target.value)}
+                required
               />
             </label>
           </li>
@@ -101,7 +170,7 @@ const AdminGame = () => {
             <div className="several-inputs">
               <p>Age des joueurs</p>
               <label htmlFor="player_agemin">
-                Minimum
+                Minimum*
                 <input
                   id="player_agemin"
                   name="player_agemin"
@@ -109,10 +178,11 @@ const AdminGame = () => {
                   placeholder="3"
                   value={valueAgeMin}
                   onChange={(e) => setValueAgeMin(e.target.value)}
+                  required
                 />
               </label>
               <label htmlFor="player_agemax">
-                Maximum
+                Maximum*
                 <input
                   id="player_agemax"
                   name="player_agemax"
@@ -120,38 +190,41 @@ const AdminGame = () => {
                   placeholder="99"
                   value={valueAgeMax}
                   onChange={(e) => setValueAgeMax(e.target.value)}
+                  required
                 />
               </label>
             </div>
             <div className="several-inputs">
               <p>Nombre de joueurs</p>
               <label htmlFor="player_nbmin">
-                Minimum
+                Minimum*
                 <input
                   id="player_nbmin"
                   name="player_nbmin"
                   type="number"
-                  placeholder="1"
+                  placeholder=""
                   value={valueNumberOfPlayersMin}
                   onChange={(e) => setValueNumberOfPlayersMin(e.target.value)}
+                  required
                 />
               </label>
               <label htmlFor="player_nbmax">
-                Maximum
+                Maximum*
                 <input
                   id="player_nbmax"
                   name="player_nbmax"
                   type="number"
-                  placeholder="8"
+                  placeholder=""
                   value={valueNumberOfPlayersMax}
                   onChange={(e) => setValueNumberOfPlayersMax(e.target.value)}
+                  required
                 />
               </label>
             </div>
           </li>
           <li>
             <label className="fullwidth">
-              Difficulté de la règle du jeu
+              Difficulté de la règle du jeu*
               <ReactSlider
                 id="gamerule_difficulty"
                 name="gamerule_difficulty"
@@ -160,11 +233,12 @@ const AdminGame = () => {
                 trackClassName="track"
                 min={1}
                 max={3}
-                onAfterChange={(state) => setValueRules(state.valueNow)}
+                onAfterChange={(state) => setValueRules(state)}
                 value={valueRules}
                 renderThumb={(props, state) => (
                   <div {...props}>{state.valueNow}</div>
                 )}
+                required
               />
             </label>
           </li>
@@ -179,7 +253,7 @@ const AdminGame = () => {
                 trackClassName="track"
                 min={0}
                 max={3}
-                onAfterChange={(state) => setValueSkill(state.valueNow)}
+                onAfterChange={(state) => setValueSkill(state)}
                 value={valueSkill}
                 renderThumb={(props, state) => (
                   <div {...props}>{state.valueNow}</div>
@@ -196,7 +270,7 @@ const AdminGame = () => {
                 trackClassName="track"
                 min={0}
                 max={3}
-                onAfterChange={(state) => setValueChance(state.valueNow)}
+                onAfterChange={(state) => setValueChance(state)}
                 value={valueChance}
                 renderThumb={(props, state) => (
                   <div {...props}>{state.valueNow}</div>
@@ -213,7 +287,7 @@ const AdminGame = () => {
                 trackClassName="track"
                 min={0}
                 max={3}
-                onAfterChange={(state) => setValueKnowledge(state.valueNow)}
+                onAfterChange={(state) => setValueKnowledge(state)}
                 value={valueKnowledge}
                 renderThumb={(props, state) => (
                   <div {...props}>{state.valueNow}</div>
@@ -230,7 +304,7 @@ const AdminGame = () => {
                 trackClassName="track"
                 min={0}
                 max={3}
-                onAfterChange={(state) => setValueReflection(state.valueNow)}
+                onAfterChange={(state) => setValueReflection(state)}
                 value={valueReflection}
                 renderThumb={(props, state) => (
                   <div {...props}>{state.valueNow}</div>
@@ -242,6 +316,7 @@ const AdminGame = () => {
             <p>Images :</p>
             <img src="https://picsum.photos/500/500" alt="" />
           </li>
+          <li className="error-message">{infoMessage}</li>
           <li>
             <button type="submit" title="Enregistrer les données du jeu">
               Enregistrer
@@ -249,7 +324,6 @@ const AdminGame = () => {
           </li>
         </ul>
       </form>
-      <p>{infoMessage}</p>
     </article>
   );
 };
