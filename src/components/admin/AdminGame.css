@@ -13,6 +13,13 @@
   width: 100%;
   margin: 0.8rem 0;
 }
+.AdminGame .error-message {
+  font-family: "Caveat", "Arial", sans-serif;
+  font-size: 3rem;
+  font-weight: bold;
+  color: rgb(80, 0, 4);
+  margin: 0 0 2rem 0;
+}
 .AdminGame form p {
   font-family: "Rajdhani", "Arial", sans-serif !important;
   font-size: 1.2rem;
