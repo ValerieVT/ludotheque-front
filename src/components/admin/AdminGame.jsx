@@ -48,13 +48,21 @@ const AdminGame = () => {
       reflection: ${valueReflection},
       skill: ${valueSkill}`);
     if (
-      valueDuration === 0 ||
-      valueAgeMin === 0 ||
-      valueAgeMax === 0 ||
-      valueNumberOfPlayersMin === 0 ||
-      valueNumberOfPlayersMax === 0
+      Number(valueDuration) === 0 ||
+      Number(valueAgeMin) === 0 ||
+      Number(valueAgeMax) === 0 ||
+      Number(valueNumberOfPlayersMin) === 0 ||
+      Number(valueNumberOfPlayersMax) === 0
     ) {
       setInfoMessage("Remplis tous les champs obligatoires !");
+    } else if (
+      valueDuration < 0 ||
+      valueAgeMin < 0 ||
+      valueAgeMax < 0 ||
+      valueNumberOfPlayersMin < 0 ||
+      valueNumberOfPlayersMax < 0
+    ) {
+      setInfoMessage("Cela n'aurait pas de sens d'avoir un nombre négatif !");
     } else {
       axios
         .post(
@@ -111,17 +119,59 @@ const AdminGame = () => {
             </label>
           </li>
           <li>
-            <label htmlFor="summary">
-              Rapide résumé :
-              <textarea
-                id="summary"
-                name="summary"
-                maxLength="600"
-                placeholder="Résumé qui donne envie de jouer"
-                value={valueSummary}
-                onChange={(e) => setValueSummary(e.target.value)}
-              />
-            </label>
+            <ul>
+              <li className="summary">
+                <label htmlFor="summary">
+                  Rapide résumé :
+                  <textarea
+                    id="summary"
+                    name="summary"
+                    maxLength="600"
+                    placeholder="Résumé qui donne envie de jouer"
+                    value={valueSummary}
+                    onChange={(e) => setValueSummary(e.target.value)}
+                  />
+                </label>
+              </li>
+              <li className="duration_min_in_minuts">
+                <label className="fullwidth" htmlFor="duration_min_in_minuts">
+                  Durée de la partie (en min)*
+                  <input
+                    id="duration_min_in_minuts"
+                    name="duration_min_in_minuts"
+                    type="number"
+                    placeholder="10"
+                    value={valueDuration}
+                    onChange={(e) => setValueDuration(e.target.value)}
+                    required
+                  />
+                </label>
+              </li>
+              <li className="gamerule_difficulty">
+                <label className="fullwidth">
+                  Difficulté de la règle du jeu*
+                  <ReactSlider
+                    id="gamerule_difficulty"
+                    name="gamerule_difficulty"
+                    className="horizontal-slider"
+                    thumbClassName="thumb"
+                    trackClassName="track"
+                    min={0}
+                    max={3}
+                    onAfterChange={(state) => setValueRules(state)}
+                    value={valueRules}
+                    renderThumb={(props, state) =>
+                      state.valueNow === 0 ? (
+                        <div {...props}>?</div>
+                      ) : (
+                        <div {...props}>{state.valueNow}</div>
+                      )
+                    }
+                    required
+                  />
+                </label>
+              </li>
+            </ul>
           </li>
           <li className="type-of-team">
             <input
@@ -150,20 +200,6 @@ const AdminGame = () => {
             <label htmlFor="collaborative">
               <img src="../../../logos/cooperatif.svg" alt="jeux coopératifs" />
               Coopératif
-            </label>
-          </li>
-          <li>
-            <label className="fullwidth" htmlFor="duration_min_in_minuts">
-              Durée de la partie (en minutes)*
-              <input
-                id="duration_min_in_minuts"
-                name="duration_min_in_minuts"
-                type="number"
-                placeholder="10"
-                value={valueDuration}
-                onChange={(e) => setValueDuration(e.target.value)}
-                required
-              />
             </label>
           </li>
           <li className="players">
@@ -221,26 +257,6 @@ const AdminGame = () => {
                 />
               </label>
             </div>
-          </li>
-          <li>
-            <label className="fullwidth">
-              Difficulté de la règle du jeu*
-              <ReactSlider
-                id="gamerule_difficulty"
-                name="gamerule_difficulty"
-                className="horizontal-slider"
-                thumbClassName="thumb"
-                trackClassName="track"
-                min={1}
-                max={3}
-                onAfterChange={(state) => setValueRules(state)}
-                value={valueRules}
-                renderThumb={(props, state) => (
-                  <div {...props}>{state.valueNow}</div>
-                )}
-                required
-              />
-            </label>
           </li>
           <li className="skills-full-half">
             <label className="skill">
