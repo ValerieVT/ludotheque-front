@@ -115,6 +115,22 @@
 }
 
 @media only screen and (min-width: 992px) {
+  .AdminGame .summary {
+    width: 40% !important;
+  }
+  .AdminGame .summary label {
+    width: 100% !important;
+  }
+  .AdminGame .summary textarea {
+    bottom: 0;
+    position: relative;
+  }
+  .AdminGame .duration_min_in_minuts {
+    width: 20% !important;
+  }
+  .AdminGame .gamerule_difficulty {
+    width: 20% !important;
+  }
   .AdminGame form img {
     width: 20rem;
   }
