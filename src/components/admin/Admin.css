@@ -62,17 +62,6 @@
   font-family: "Walter Turncoat", "Arial", sans-serif;
   text-transform: uppercase;
 }
-.Admin form button {
-  width: 6rem;
-  background-color: #331615;
-  color: #fff;
-  border: none;
-  margin: 1rem auto 2rem auto;
-  padding: 0.5rem;
-  font-family: "Walter Turncoat", "Arial", sans-serif;
-  font-size: 1.5rem;
-  cursor: pointer;
-}
 
 @media only screen and (min-width: 992px) {
   .Admin .choices a {
