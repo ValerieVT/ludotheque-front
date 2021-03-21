@@ -109,6 +109,24 @@ li {
   background-color: inherit;
 }
 
+.Home .li-search-by-name {
+  margin: 3rem auto;
+}
+
+.Home .chercher {
+  font-family: "Walter Turncoat", "Arial", sans-serif;
+  font-size: 2rem;
+  text-transform: none;
+  transform: rotate(-1.5deg);
+  color: #fff;
+  width: 100%;
+}
+
+.Home input {
+  width: 80%;
+  font-size: 2rem;
+}
+
 @media only screen and (min-width: 992px) {
   h1 {
     font-size: 6rem;
