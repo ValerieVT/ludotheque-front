@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import ListOfExistingGames from "./ListOfExistingGames";
 import axios from "axios";
 
 export default function Home() {
   const [randomGame, setRandomGame] = useState(1);
+  const [infoMessage, setInfoMessage] = useState("");
+  const [listOfPossibleGames, setListOfPossibleGames] = useState([]);
 
   const getGames = () => {
     const url = `${process.env.REACT_APP_API_URL}jeux/random`;
@@ -16,6 +19,28 @@ export default function Home() {
       .catch((error) => {
         console.error(error.response?.data?.error);
       });
+  };
+
+  const searchGame = (e) => {
+    const inputSearch = e.target.value;
+    if (inputSearch.length <= 1) {
+      setListOfPossibleGames([]);
+    } else if (inputSearch.length > 1) {
+      setInfoMessage("");
+      const url = `${process.env.REACT_APP_API_URL}jeux/search?name=`;
+      axios
+        .get(`${url}${inputSearch}`, {
+          withCredentials: true,
+        })
+        .then((response) => response.data)
+        .then((listOfSearchedGames) => {
+          setListOfPossibleGames(listOfSearchedGames);
+        })
+        .catch((error) => {
+          setInfoMessage(error.response?.data?.error);
+          setListOfPossibleGames([]);
+        });
+    }
   };
 
   useEffect(() => {
@@ -91,6 +116,20 @@ export default function Home() {
             <span>Voir tous les jeux</span>
           </li>
         </Link>
+        <li className="li-search-by-name">
+          <p className="chercher">Tu cherches un jeu en particulier ?</p>
+          <form>
+            <label htmlFor="jeuEnStock">
+              <input type="text" id="jeuEnStock" onChange={searchGame}></input>
+            </label>
+          </form>
+          {listOfPossibleGames.length === [] ? (
+            ""
+          ) : (
+            <ListOfExistingGames listOfPossibleGames={listOfPossibleGames} />
+          )}
+          <p className="error-message">{infoMessage}</p>
+        </li>
       </ul>
     </main>
   );
