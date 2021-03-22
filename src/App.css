@@ -127,6 +127,14 @@ li {
   font-size: 2rem;
 }
 
+.Home .error-message {
+  font-family: "Caveat", "Arial", sans-serif;
+  font-size: 3rem;
+  font-weight: bold;
+  color: rgb(80, 0, 4);
+  margin: 0 0 2rem 0;
+}
+
 @media only screen and (min-width: 992px) {
   h1 {
     font-size: 6rem;
