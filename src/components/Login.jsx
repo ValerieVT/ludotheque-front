@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import axios from "axios";
 import "./Login.css";
 
-export default function Login() {
+const Login = ({ ifConnected, setIfConnected }) => {
   const [identifier, setIdentifier] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
@@ -17,9 +17,7 @@ export default function Login() {
         withCredentials: true,
       })
       .then((res) => {
-        console.log(res.data);
-      })
-      .then(() => {
+        setIfConnected(true);
         history.push("/admin");
       })
       .catch((error) => {
@@ -60,4 +58,6 @@ export default function Login() {
       <button type="submit">Je me connecte&nbsp;!</button>
     </form>
   );
-}
+};
+
+export default Login;
