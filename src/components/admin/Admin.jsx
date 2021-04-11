@@ -4,6 +4,7 @@ import { Link, useHistory } from "react-router-dom";
 import { Route, Switch, useRouteMatch } from "react-router-dom";
 import AdminPictures from "./AdminPictures";
 import AdminThemes from "./AdminThemes";
+import AdminCreateGame from "./AdminCreateGame";
 import AdminGame from "./AdminGame";
 import ListOfExistingGames from "../ListOfExistingGames";
 import AdminGamesNotDisplayed from "./AdminGamesNotDisplayed";
@@ -12,14 +13,13 @@ import "./Admin.css";
 const Admin = () => {
   const [infoMessage, setInfoMessage] = useState("");
   const [listOfPossibleGames, setListOfPossibleGames] = useState([]);
-
   const history = useHistory();
+
   useEffect(() => {
     axios
       .get(`${process.env.REACT_APP_API_URL}auth/admin`, {
         withCredentials: true,
       })
-      .then(() => console.log("tu es connecté"))
       .catch(() => history.push("/"));
   }, []);
 
@@ -53,7 +53,8 @@ const Admin = () => {
       <Switch>
         <Route path={`${path}/photos`} component={AdminPictures} />
         <Route path={`${path}/themes`} component={AdminThemes} />
-        <Route exact path={`${path}/jeux`} component={AdminGame} />
+        <Route exact path={`${path}/jeux/`} component={AdminCreateGame} />
+        <Route exact path={`${path}/jeux/:id`} component={AdminGame} />
         <Route exact path={`${path}/`}>
           <ul className="choices">
             <Link to={`${path}/photos`} title="Ajouter des photos">
@@ -81,7 +82,10 @@ const Admin = () => {
           {listOfPossibleGames.length === [] ? (
             ""
           ) : (
-            <ListOfExistingGames listOfPossibleGames={listOfPossibleGames} />
+            <ListOfExistingGames
+              url="/admin/jeux/"
+              listOfPossibleGames={listOfPossibleGames}
+            />
           )}
           <p className="error-message">{infoMessage}</p>
           <AdminGamesNotDisplayed />
