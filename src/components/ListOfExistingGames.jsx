@@ -3,12 +3,12 @@ import { Link } from "react-router-dom";
 import "./ListOfExistingGames.css";
 
 export default function ListOfExistingGames(props) {
-  const { listOfPossibleGames } = props;
+  const { listOfPossibleGames, url } = props;
   return (
     <ul className="ListOfExistingGames">
       {listOfPossibleGames.map((game) => (
-        <li>
-          <Link to={`/jeux/${game.id}`} title={game.name}>
+        <li key={game.id}>
+          <Link to={`${url}${game.id}`} title={game.name}>
             {game.name}
           </Link>
         </li>
