@@ -4,17 +4,38 @@
   padding: 0;
   list-style-type: none;
   text-align: center;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: flex-start;
+  transition: width 0.5s ease;
 }
 .ListOfExistingGames li {
-  width: 100%;
-  text-align: center;
+  background-color: none;
+  width: auto;
+  display: flex;
+  justify-content: center;
+  z-index: 5;
 }
 .ListOfExistingGames li a {
+  font-family: "Caveat", "Arial", sans-serif;
+  color: #000 !important;
   background-color: rgba(255, 255, 255, 0.9) !important;
-  padding: 0rem !important;
-  margin: 0.2rem 0 !important;
-  width: 100% !important;
-  height: 2.5rem !important;
+  padding: 0.1rem 0.6rem !important;
+  margin: 0.3rem 1rem !important;
+  width: auto !important;
+  height: auto !important;
+  position: relative;
+}
+
+.ListOfExistingGames li:nth-of-type(2n + 1) {
+  transform: rotate(-3deg);
+}
+.ListOfExistingGames li:nth-of-type(5n + 1) {
+  transform: rotate(1deg);
+}
+.ListOfExistingGames li:nth-of-type(3n + 2) {
+  transform: rotate(-1deg);
 }
 .ListOfExistingGames li a:hover {
   color: #7a0400 !important;
