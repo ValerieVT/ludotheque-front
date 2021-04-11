@@ -2,9 +2,13 @@ import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
 
-const Header = () => {
+const Header = ({ ifConnected, setIfConnected }) => {
   const history = useHistory();
   const [errorMessage, setErrorMessage] = useState("");
+
+  function goBack() {
+    history.goBack();
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -17,7 +21,7 @@ const Header = () => {
         }
       )
       .then((res) => {
-        console.log("déconnecté");
+        setIfConnected(false);
       })
       .then(() => {
         history.push("/");
@@ -35,12 +39,20 @@ const Header = () => {
         </Link>
       </h1>
       <div>
-        <Link to="/connexion" title="Connexion">
-          Se connecter
-        </Link>
-        <form onSubmit={handleSubmit}>
-          <button type="submit">Se déconnecter</button>
-        </form>
+        <span className="back" onClick={goBack} title="Retour">
+          🠴
+        </span>
+        <span className="connection">
+          {ifConnected ? (
+            <form onSubmit={handleSubmit}>
+              <button type="submit">Se déconnecter</button>
+            </form>
+          ) : (
+            <Link to="/connexion" title="Connexion">
+              Se connecter
+            </Link>
+          )}
+        </span>
       </div>
       <p className="error-message">{errorMessage}</p>
     </header>
