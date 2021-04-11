@@ -120,13 +120,21 @@ export default function Home() {
           <p className="chercher">Tu cherches un jeu en particulier ?</p>
           <form>
             <label htmlFor="jeuEnStock">
-              <input type="text" id="jeuEnStock" onChange={searchGame}></input>
+              <input
+                type="text"
+                id="jeuEnStock"
+                autoComplete="off"
+                onChange={searchGame}
+              ></input>
             </label>
           </form>
           {listOfPossibleGames.length === [] ? (
             ""
           ) : (
-            <ListOfExistingGames listOfPossibleGames={listOfPossibleGames} />
+            <ListOfExistingGames
+              url="/jeux/"
+              listOfPossibleGames={listOfPossibleGames}
+            />
           )}
           <p className="error-message">{infoMessage}</p>
         </li>
