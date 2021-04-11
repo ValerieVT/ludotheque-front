@@ -30,18 +30,6 @@ li {
   text-decoration: none;
 }
 
-.App header div {
-  width: 10rem;
-  position: absolute;
-  right: 0rem;
-  top: 0.5rem;
-  font-size: 1rem;
-  font-weight: bold;
-}
-.App header div a:hover {
-  text-decoration: underline;
-}
-
 .Home .choices {
   width: 100%;
   display: flex;
@@ -60,8 +48,8 @@ li {
   padding: 0;
 }
 .Home .choices li {
-  height: 9rem;
-  width: 9rem;
+  height: 8.1rem;
+  width: 8.1rem;
   background-color: #7a0400;
   color: rgb(179, 142, 142);
   display: flex;
@@ -110,6 +98,7 @@ li {
 }
 
 .Home .li-search-by-name {
+  width: 80%;
   margin: 3rem auto;
 }
 
@@ -125,6 +114,8 @@ li {
 .Home input {
   width: 80%;
   font-size: 2rem;
+  z-index: 2;
+  text-align: center;
 }
 
 .Home .error-message {
