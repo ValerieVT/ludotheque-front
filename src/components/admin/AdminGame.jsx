@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useHistory, useLocation, useParams } from "react-router-dom";
 import ReactSlider from "react-slider";
 import axios from "axios";
 import "./AdminGame.css";
 
-const AdminGame = () => {
+const AdminGame = (props) => {
   const [infoMessage, setInfoMessage] = useState("");
   const [valueName, setValueName] = useState("");
   const [valueSummary, setValueSummary] = useState("");
@@ -20,7 +20,9 @@ const AdminGame = () => {
   const [valueKnowledge, setValueKnowledge] = useState(0);
   const [valueAsymetric, setValueAsymetric] = useState(0);
   const [valueCollaborative, setValueCollaborative] = useState(0);
+  const [theGame, setTheGame] = useState([]);
   const history = useHistory();
+  const location = useLocation();
 
   const assignValue = (valueTargetted) => {
     if (valueTargetted === 0) {
@@ -65,7 +67,7 @@ const AdminGame = () => {
       setInfoMessage("Cela n'aurait pas de sens d'avoir un nombre négatif !");
     } else {
       axios
-        .post(
+        .put(
           url,
           {
             name: valueName,
@@ -88,7 +90,7 @@ const AdminGame = () => {
         .then((response) => response.data)
         .then((newGame) => {
           setInfoMessage(
-            `Le jeu "${newGame[0].name}" vient d'être créé ! N'oublie pas d'y ajouter des photos !`
+            `Le jeu "${newGame[0].name}" vient d'être modifié ! N'oublie pas d'y ajouter des photos !`
           );
           setTimeout(() => history.push("/admin"), 8000);
         })
@@ -98,9 +100,56 @@ const AdminGame = () => {
     }
   };
 
+  let { id } = useParams();
+
+  useEffect(() => {
+    const url = `${process.env.REACT_APP_API_URL}auth/admin/jeux/${id}`;
+    axios
+      .get(url)
+      .then((response) => response.data)
+      .then((foundGame) => {
+        setTheGame(foundGame);
+        setValueName(foundGame.name);
+        setValueSummary(foundGame.summary);
+        setValueRules(foundGame.gamerule_difficulty);
+        setValueDuration(foundGame.duration_min_in_minuts);
+        setValueCollaborative(foundGame.collaborative);
+        setValueAgeMin(foundGame.player_agemin);
+        setValueAgeMax(foundGame.player_agemax);
+        valueNumberOfPlayersMin(foundGame.player_nbmin);
+        valueNumberOfPlayersMax(foundGame.player_nbmax);
+        setValueSkill(foundGame.skill);
+        setValueChance(foundGame.chance);
+        setValueKnowledge(foundGame.generalknowledge);
+        setValueReflection(Number(foundGame.reflection));
+      })
+      .then(() => {
+        console.log(`name: ${valueName} / ${theGame.name},
+    summary: ${valueSummary},
+    duration_min_in_minuts: ${valueDuration},
+    player_nbmin: ${valueNumberOfPlayersMin},
+    player_nbmax: ${valueNumberOfPlayersMax},
+    player_agemin: ${valueAgeMin},
+    player_agemax: ${valueAgeMax},
+    collaborative: ${valueCollaborative},
+    asymetric: ${valueAsymetric},
+    gamerule_difficulty: ${valueRules},
+    generalknowledge: ${valueKnowledge},
+    chance: ${valueChance},
+    reflection: ${valueReflection},
+    skill: ${valueSkill}`);
+      })
+      .catch((error) => {
+        setInfoMessage(error.response?.data?.error);
+      });
+  }, []);
+
   return (
     <article className="AdminGame">
-      <h3>Ajouter ou modifier un jeu</h3>
+      <h3>{theGame !== [] ? `Modifier ${theGame.name}` : "Ajouter un jeu"}</h3>
+      <button className="delete" type="button">
+        {theGame !== [] ? `Supprimer ${theGame.name}` : "Supprimer le jeu"}
+      </button>
       <form onSubmit={savingSubmit}>
         <ul>
           <li className="error-message">{infoMessage}</li>
@@ -334,7 +383,11 @@ const AdminGame = () => {
           </li>
           <li className="error-message">{infoMessage}</li>
           <li>
-            <button type="submit" title="Enregistrer les données du jeu">
+            <button
+              className="save"
+              type="submit"
+              title="Enregistrer les données du jeu"
+            >
               Enregistrer
             </button>
           </li>
