@@ -107,11 +107,21 @@
   width: 80%;
   max-width: 800px;
 }
-.AdminGame button {
+.AdminGame .save {
   font-family: "Rajdhani", "Arial", sans-serif !important;
   width: auto !important;
   font-size: 2rem !important;
   padding: 0.5rem 2rem !important;
+}
+.AdminGame .delete {
+  cursor: pointer;
+  font-size: 0.9rem;
+  border: none;
+  padding: 0.4rem 1rem;
+}
+.AdminGame .delete:hover {
+  background-color: #f00;
+  color: #fff;
 }
 
 @media only screen and (min-width: 992px) {
