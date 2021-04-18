@@ -28,7 +28,11 @@ export default function GamesTheme(props) {
 
   return (
     <article className="Games">
-      <h2>La sélection thématique&nbsp;:</h2>
+      <h2>
+        La sélection{" "}
+        {listOfGames.length > 0 ? listOfGames[0].selectionned_theme : ""}
+        &nbsp;:
+      </h2>
       <ul>
         <li className="error-message">{errorMessage}</li>
         {listOfGames !== []
