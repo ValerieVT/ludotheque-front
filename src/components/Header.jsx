@@ -46,6 +46,7 @@ const Header = ({ ifConnected, setIfConnected }) => {
         <span className="connection">
           {ifConnected ? (
             <form onSubmit={handleSubmit}>
+              <a href="/admin">L'arrière-salle</a> |
               <button type="submit">Se déconnecter</button>
             </form>
           ) : (
