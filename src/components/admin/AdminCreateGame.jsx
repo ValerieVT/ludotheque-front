@@ -94,14 +94,6 @@ const AdminCreateGame = (props) => {
       Number(valueNumberOfPlayersMax) === 0
     ) {
       setInfoMessage("Remplis tous les champs obligatoires !");
-    } else if (
-      valueDuration < 0 ||
-      valueAgeMin < 0 ||
-      valueAgeMax < 0 ||
-      valueNumberOfPlayersMin < 0 ||
-      valueNumberOfPlayersMax < 0
-    ) {
-      setInfoMessage("Cela n'aurait pas de sens d'avoir un nombre négatif !");
     } else {
       axios
         .post(
