@@ -42,6 +42,18 @@
   margin: 1.5rem 10%;
 }
 
+.AdminGame .button-masking-input {
+  background-color: #331615;
+  font-size: 1.6rem;
+  color: #fff;
+  opacity:0.7;
+  padding: 0.6rem 0;
+  cursor: pointer;
+}
+.AdminGame .button-masking-input:hover {
+  opacity: 0.9;
+}
+
 .AdminGame .type-of-team {
   width: 80%;
   display: flex;
@@ -101,6 +113,18 @@
   text-transform: none !important;
   width: 100%;
   resize: none;
+}
+
+.AdminGame .close {
+  opacity: 0.7;
+  width: 1.2rem;
+  position:absolute;
+  right: 0;
+  top: -1.4rem;
+  cursor: pointer;
+}
+.AdminGame .close:hover {
+  opacity: 0.9;
 }
 
 .AdminGame form img {
@@ -166,5 +190,9 @@
   }
   .AdminGame .skills-full-half .skill {
     width: 100% !important;
+  }
+  
+  .AdminGame .several-inputs {
+    width: 50%;
   }
 }

@@ -9,7 +9,8 @@ const AdminCreateGame = (props) => {
   const [valueName, setValueName] = useState("");
   const [valueSummary, setValueSummary] = useState("");
   const [valueAgeMin, setValueAgeMin] = useState(0);
-  const [valueAgeMax, setValueAgeMax] = useState(0);
+  const [valueAgeMax, setValueAgeMax] = useState(null);
+  const [saveAgeMax, setSaveAgeMax] = useState(false);
   const [valueDuration, setValueDuration] = useState(0);
   const [valueNumberOfPlayersMin, setValueNumberOfPlayersMin] = useState(0);
   const [valueNumberOfPlayersMax, setValueNumberOfPlayersMax] = useState(0);
@@ -21,6 +22,45 @@ const AdminCreateGame = (props) => {
   const [valueAsymetric, setValueAsymetric] = useState(0);
   const [valueCollaborative, setValueCollaborative] = useState(0);
   const history = useHistory();
+
+  const setAgeMaxToNull = () => {
+    setValueAgeMax(null);
+  };
+
+  let inputAgeMax;
+
+  if (saveAgeMax === true) {
+    inputAgeMax = (
+      <div style={{ position: "relative" }}>
+        <img
+          src="../images/croix.svg"
+          className="close"
+          alt="Finalement, pas d'âge maximum !"
+          title="Finalement, pas d'âge maximum !"
+          onClick={() => setSaveAgeMax(false)}
+        />
+        <input
+          id="player_agemax"
+          name="player_agemax"
+          type="number"
+          min="0"
+          placeholder="99"
+          value={valueAgeMax ?? 0}
+          onChange={(e) => setValueAgeMax(e.target.value)}
+          required
+        />
+      </div>
+    );
+  } else {
+    inputAgeMax = (
+      <div
+        className="button-masking-input"
+        onClick={() => setSaveAgeMax(true) && setAgeMaxToNull()}
+      >
+        Ajouter un âge maximum
+      </div>
+    );
+  }
 
   const assignValue = (valueTargetted) => {
     if (valueTargetted === 0) {
@@ -50,7 +90,6 @@ const AdminCreateGame = (props) => {
     if (
       Number(valueDuration) === 0 ||
       Number(valueAgeMin) === 0 ||
-      Number(valueAgeMax) === 0 ||
       Number(valueNumberOfPlayersMin) === 0 ||
       Number(valueNumberOfPlayersMax) === 0
     ) {
@@ -140,6 +179,7 @@ const AdminCreateGame = (props) => {
                     id="duration_min_in_minuts"
                     name="duration_min_in_minuts"
                     type="number"
+                    min="0"
                     placeholder="10"
                     value={valueDuration}
                     onChange={(e) => setValueDuration(e.target.value)}
@@ -211,23 +251,17 @@ const AdminCreateGame = (props) => {
                   id="player_agemin"
                   name="player_agemin"
                   type="number"
+                  min="0"
                   placeholder="3"
                   value={valueAgeMin}
                   onChange={(e) => setValueAgeMin(e.target.value)}
                   required
                 />
               </label>
+
               <label htmlFor="player_agemax">
-                Maximum*
-                <input
-                  id="player_agemax"
-                  name="player_agemax"
-                  type="number"
-                  placeholder="99"
-                  value={valueAgeMax}
-                  onChange={(e) => setValueAgeMax(e.target.value)}
-                  required
-                />
+                Maximum
+                {inputAgeMax}
               </label>
             </div>
             <div className="several-inputs">
@@ -238,6 +272,7 @@ const AdminCreateGame = (props) => {
                   id="player_nbmin"
                   name="player_nbmin"
                   type="number"
+                  min="0"
                   placeholder=""
                   value={valueNumberOfPlayersMin}
                   onChange={(e) => setValueNumberOfPlayersMin(e.target.value)}
@@ -250,6 +285,7 @@ const AdminCreateGame = (props) => {
                   id="player_nbmax"
                   name="player_nbmax"
                   type="number"
+                  min="0"
                   placeholder=""
                   value={valueNumberOfPlayersMax}
                   onChange={(e) => setValueNumberOfPlayersMax(e.target.value)}
